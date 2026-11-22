@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BILCOIN · Билим Инновация Лицей</title><link rel="icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;--night:#06112e;--royal:#0d2466;--royal2:#16348f;--gold:#d4af5f;--gold2:#f0d896;--ivory:#f6efdc;--ink:#eef1ff;--mut:#9fb0e6;--line:rgba(212,175,95,.28);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px);background:var(--night)}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);font:15px/1.5 Manrope,"Segoe UI",system-ui,sans-serif;background:radial-gradient(1100px 620px at 50% -80px,#1d44b8 0%,#0d2466 38%,#06112e 78%) no-repeat,var(--night);min-height:100vh}
+.wrap{max-width:960px;margin:0 auto;padding:0 16px}
+.hero{text-align:center;padding:34px 0 26px;position:relative}
+.medal{width:min(250px,62vw);aspect-ratio:1;margin:0 auto;border-radius:50%;background:radial-gradient(circle at 50% 38%,#fffaf0,var(--ivory) 70%,#e9dcb4);display:grid;place-items:center;box-shadow:0 0 0 5px var(--night),0 0 0 8px var(--gold),0 0 0 14px var(--night),0 0 0 15px var(--line),0 24px 70px rgba(0,0,0,.55),0 0 90px rgba(212,175,95,.22)}
+.medal img{width:80%;display:block}
+h1{margin:26px 0 4px;font:700 clamp(40px,9vw,64px)/1 "Cormorant Garamond",Georgia,serif;letter-spacing:.07em;color:var(--gold2);text-shadow:0 2px 24px rgba(212,175,95,.3)}
+.sub{margin:0 auto 22px;color:var(--mut);max-width:34em}
+.search{max-width:560px;margin:0 auto}
+.search input{width:100%;padding:16px 22px;border-radius:999px;border:2px solid var(--gold);background:rgba(6,17,46,.75);color:var(--ink);font:600 17px Manrope,sans-serif;outline:none}
+.search input::placeholder{color:#7f92d1}
+.search input:focus-visible,.chip:focus-visible,.btn:focus-visible,.row:focus-visible{outline:3px solid var(--gold2);outline-offset:2px}
+
+main{padding:8px 0 44px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:0 0 12px}
+.chip{border:1px solid var(--line);background:rgba(13,36,102,.6);color:var(--ink);padding:8px 16px;border-radius:999px;cursor:pointer;font:600 14px Manrope,sans-serif}
+.chip.on{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#06112e;border-color:var(--gold)}
+.podium{display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:12px;align-items:end;margin:22px 0}
+.pod{border:1px solid var(--gold);border-radius:18px 18px 8px 8px;padding:16px 10px 18px;text-align:center;cursor:pointer;background:linear-gradient(180deg,var(--royal2),var(--royal));min-height:132px}
+.pod.p1{min-height:166px;background:linear-gradient(180deg,var(--gold2),var(--gold));color:#06112e;border-color:var(--gold2)}
+.pod .m{font-size:28px}.pod b{display:block;margin:4px 0 0;font-size:14px;line-height:1.25}.pod span{font-size:12px;opacity:.75}
+.pod i{display:block;margin-top:8px;font:700 26px "Cormorant Garamond",Georgia,serif;font-style:normal}
+.pod:not(.p1) i{color:var(--gold2)}
+.list{background:rgba(6,17,46,.72);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.row{display:grid;grid-template-columns:50px 1fr 64px 100px;gap:8px;align-items:center;padding:12px 16px;border-bottom:1px solid rgba(212,175,95,.14);cursor:pointer}
+.row:last-child{border:0}.row:hover{background:rgba(22,52,143,.55)}
+.rk{font:700 18px "Cormorant Garamond",Georgia,serif;color:var(--gold)}
+.pts{text-align:right;font-weight:700;color:var(--gold2)}
+.cls{color:var(--mut);font-size:13px}
+.empty{padding:30px;text-align:center;color:var(--mut)}
+.btn{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#06112e;border:0;border-radius:10px;padding:10px 18px;font:700 14px Manrope,sans-serif;cursor:pointer}
+.btn.ghost{background:rgba(6,17,46,.6);border:1px solid var(--gold);color:var(--gold2)}
+.panel{background:rgba(13,36,102,.8);border:1px solid var(--gold);border-radius:16px;padding:16px;margin:0 0 18px}
+.panel h3{margin:0 0 12px;font:700 22px "Cormorant Garamond",Georgia,serif;color:var(--gold2)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.panel input,.panel select{width:100%;padding:11px;border-radius:8px;border:1px solid var(--line);background:#06112e;color:var(--ink);font:14px Manrope,sans-serif}
+.full{grid-column:1/-1}
+.modal{position:fixed;inset:0;background:rgba(3,8,24,.82);display:none;align-items:center;justify-content:center;padding:16px;z-index:20}
+.modal.on{display:flex}
+.acct{background:var(--night);border-radius:20px;max-width:460px;width:100%;max-height:88vh;overflow:auto;border:1px solid var(--gold)}
+.acct .hd{background:linear-gradient(160deg,var(--royal2),var(--royal));padding:20px;border-bottom:2px solid var(--gold);display:flex;gap:14px;align-items:center}
+.acct .hd .mini{width:64px;height:64px;flex:none;border-radius:50%;background:var(--ivory);display:grid;place-items:center;border:2px solid var(--gold)}
+.acct .hd .mini img{width:78%}
+.acct .nm{font-weight:700;font-size:17px;line-height:1.25}
+.acct .bal{font:700 38px "Cormorant Garamond",Georgia,serif;color:var(--gold2);line-height:1.1;margin:2px 0}
+.acct small{color:var(--mut)}
+.acct .bd{padding:14px 20px}
+.tx{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:14px}
+.pos{color:#7be0ae}.neg{color:#ff8f87}
+footer{text-align:center;color:var(--mut);font-size:12px;padding:0 0 26px}
+@media(max-width:560px){.row{grid-template-columns:38px 1fr 84px}.row .cls{display:none}.grid{grid-template-columns:1fr}.pod b{font-size:12px}#adminBtn{position:static;margin-top:14px}}
+@media(prefers-reduced-motion:no-preference){.medal{animation:rise .9s ease-out both}@keyframes rise{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:none}}}
+
+.modal .box{background:var(--night);border:1px solid var(--gold);border-radius:20px;max-width:380px;width:100%;padding:22px}
+.box h3{margin:0 0 4px;font:700 26px "Cormorant Garamond",Georgia,serif;color:var(--gold2)}
+.box p{margin:0 0 14px;color:var(--mut);font-size:13px}
+.box input{width:100%;padding:12px;margin:0 0 10px;border-radius:10px;border:1px solid var(--line);background:#06112e;color:var(--ink);font:15px Manrope,sans-serif}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:10px;background:rgba(212,175,95,.14);border:1px solid var(--gold);border-radius:12px;padding:10px 14px;margin:0 0 14px;font-size:14px}
+.lnk{background:none;border:0;color:var(--mut);text-decoration:underline;cursor:pointer;font:13px Manrope,sans-serif;padding:0}
+</style></head><body>
+<div class="wrap"><section class="hero">
+ <div class="medal"><img alt="Логотип Билим Инновация Лицей" src="logo.png"></div>
+ <h1>BILCOIN</h1>
+ <p class="sub">Рейтинг учеников Билим Инновация Лицея, 2026–2027 учебный год</p>
+ <div class="search"><input id="q" type="search" placeholder="Введите имя или фамилию" autocomplete="off" aria-label="Поиск ученика"></div>
+</section></div>
+<main class="wrap">
+ <div id="bar" class="bar" style="display:none"><span>Вы вошли как <b id="who"></b>. Баллы начисляются всем ученикам.</span><button class="btn ghost" id="out">Выйти</button></div>
+ <div id="adm" class="panel" style="display:none">
+  <h3>Начисление баллов</h3>
+  <div class="grid">
+   <div class="full"><input id="aName" list="dl" placeholder="Ученик: начните вводить имя"><datalist id="dl"></datalist></div>
+   <select id="aPre"></select><input id="aPts" type="number" placeholder="Баллы (можно со знаком минус)">
+   <input class="full" id="aWhy" placeholder="Причина, например: Республиканская олимпиада, 1 место">
+   <div class="full"><button class="btn" id="aGo">Начислить</button> <span id="aMsg" style="margin-left:8px;font-size:13px"></span></div>
+  </div>
+ </div>
+ <div class="chips" id="par"></div><div class="chips" id="cls"></div>
+ <div class="podium" id="pod"></div><div class="list" id="list"></div>
+</main>
+<footer>1 балл = 1 BILCOIN. Итоги подводятся в конце учебного года.</footer>
+<div class="modal" id="mod"><div class="acct" id="acct"></div></div>
+<div class="modal" id="lg"><form class="box" id="lgf">
+ <h3>Вход для модератора</h3><p>Введите логин и пароль, чтобы начислять баллы.</p>
+ <input id="lu" placeholder="Логин" autocomplete="username"><input id="lp" type="password" placeholder="Пароль" autocomplete="current-password">
+ <div id="lm" style="min-height:20px;font-size:13px;color:#ff8f87;margin-bottom:8px"></div>
+ <button class="btn" type="submit">Войти</button> <button class="lnk" type="button" id="seeAcc" style="margin-left:10px">Показать счёт ученика</button>
+</form></div>
+<script>
+const API="/.netlify/functions/api";const LOGO="logo.png";
+const CLASSES={"7А": ["Амантаев Абулхаир", "Балтабаев Алихан", "Бақытхан Айсұлтан", "Беріков Мансур", "Жанат Ералы", "Жұмабек Жандос", "Жұмағали Дәулет", "Жұмабек Ерсұлтан", "Иршат Нұрали", "Қасанбай Арафат", "Қасен Нұржігіт", "Омар Қуандық", "Махсұт Нұр-Әли", "Молдабеков Ақжүрек", "Мұрат Сұлтанәли", "Рауанұлы Мансұр", "Сарқытбек Елжан", "Сейсебаев Батырхан", "Сембек Әмірхан", "Советхан Нұржігіт", "Токтарханов Акежан", "Тоқтағазы Асет", "Толымханов Абылайхан", "Улукбек Али Сұлтан"], "8А": ["Амангелді Әділ", "Амангелді Әмір", "Әділбекұлы Нұрхан", "Байжан Бақжан", "Дегенов Даниел", "Ерболсын Али", "Жақсылықов Алинұр", "Заиров Ералы", "Қабдұшев Бекнұр", "Қоблан Әділет", "Құсман Әлмәді", "Мұратбек Нұрасыл", "Нұртай Ералы", "Оразхан Илияс", "Сеилхан Абзал", "Сембинов Ерсұлтан", "Тахиров Умар", "Тлеуғазы Еркебұлан", "Тлеуқұл Алдияр", "Төлеу Арнұр", "Тұрсын Нұрасыл", "Уәли Әлихан"], "9А": ["Базарбек Нұрәлі", "Бейсенәлі Нұрмұхаммед", "Ғазиз Марғұлан", "Ельчибеков Нұрәлі", "Есенкелді Әлихан", "Жалбуров Карим", "Жанатов Елжан", "Какимжанов Алижан", "Кемелтаев Нұрсат", "Қалижан Ескендір", "Қасен Әкежан", "Қубай Нұрмұхамед", "Мәдениет Әділ", "Мухаметқали Алихан", "Мұратбек Сұлтанәлі", "Мүбәрак Искандер", "Өмірхан Нұрали", "Серік Әділжан", "Серікжан Ерасыл", "Серікқали Ілияс", "Талантұлы Алихан", "Хозыев Әкежан"], "10А": ["Асқар Сұлтан", "Ахметқали Алибек", "Бақыт Қуаныш", "Болат Жанболат", "Болатбек Елжан", "Білімбеков Ерболат", "Екпін Шалқар", "Ерулан Мансур", "Жасұланұлы Бекзат", "Жунусов Бейбарыс", "Кайнар Ислам", "Құсайынғазин Оразәлі", "Мамадилов Дархан", "Медахмет Асылмұрат", "Нұрсаин Айқын", "Рамазанов Бекарыс", "Рахан Олжас", "Русланұлы Мирас", "Сержан Толықжан", "Табараков Айдмұхамед", "Шыңғысхан Ердос"], "11А": ["Аблезов Арсен", "Ақылжан Арсынби", "Аманжол Нұрали", "Аргынгазин Ержан", "Ардахов Жанарыс", "Әмірғалиев Сұлтанби", "Дүйсенбеков Ерасыл", "Жүнүсов Темірлан", "Жылгелді Шыңғыс", "Икласов Закария", "Исхан Бақберген", "Қадылбек Ақтөре", "Лензат Аят", "Магзумов Алихан", "Мамытов Султан", "Маратов Еркебұлан", "Муратов Алихан", "Мұратханов Ерхан", "Оразалин Нұрсұлтан", "Оспанғали Ернұр", "Сабырбек Алишер", "Санақбек Бекжан", "Слямов Арнұр", "Таңжарықұлы Тасқын", "Тоқтарғазы Асанәлі"], "7Б": ["Айтейев Ислам", "Алматұлы Айбат", "Арманов Аян", "Бақытхан Нұртілеу", "Бауыржанұлы Санжар", "Бекболат Айбек", "Бексұлтан Диас", "Ғайбулла Ибрахим", "Есхат Бақжан", "Жұмабек Санжар", "Заурұлы Сұлтанбек", "Калилканов Арсен", "Қаттабай Ислам", "Қаниқан Амирхан", "Қасенғали Арман", "Нұрғазы Шерхан", "Нұржан Нұрислам", "Салауатұлы Нұрмұхаммед", "Сатжан Амир", "Серекқазы Әскер", "Серікхан Мансұр", "Таңжихан Әмір", "Тлеуғали Жігер", "Тұрсұн Мейіржан"], "8Б": ["Асылбек Шәкәрім", "Бахтаулов Ерсұлтан", "Бикенов Диар", "Болат Арсен", "Даниярұлы Бақытжан", "Дархан Алихан", "Жұмабек Сұлтан", "Кажимкан Жангир", "Кенжеқан Бексұлтан", "Қаламбек Жақсылық", "Қалқаманұлы Темірлан", "Құрманбай Ануар", "Майжанов Айбар", "Мақсатбек Мейржан", "Маратов Бексұлтан", "Мұратқали Әлихан", "Нақбаев Ералы", "Садықан Әлибек", "Тлеуғалиев Қабдолла", "Тоқтасын Мұстафа", "Тукен Алмас", "Түсіпбек Ұлағат"], "9Б": ["Алмазұлы Әбілмансұр", "Алпыс Алихан", "Амантаев Нұртілеу", "Асхан Нартай", "Әбен Сұлтан", "Биахметов Ғани", "Даулет Жомарт", "Елубай Ерасыл", "Ержанұлы Мұхаммедәли", "Жакыпбеков Азамат", "Жарқынов Али", "Жүнісқан Ермақан", "Зарыпов Нұрали", "Қали Омар", "Мұратбек Ералы", "Серік Арнұр", "Тлеуханов Бекзат", "Тұрсынқанов Әлихан", "Уисипов Ерасыл"], "10Б": ["Амангелді Ералы", "Аманкелді Алдияр", "Асқарұлы Батыр", "Габдрахман Сұлтан", "Даниял Ерсұлтан", "Ержан Арнұр", "Касымжан Мейіржан", "Қадылбек Бақдәулет", "Қалидолда Ерәлі", "Манарбек Арсен", "Маратов Ермек", "Мұрат Әли", "Мұратқан Мансұр", "Мүташ Әділжан", "Нұрсайын Мақсат", "Сакенов Дарын", "Сәткен Ақжігіт", "Серікжан Бекболат", "Тоқтарбек Нұралы", "Түсіпбек Ерасыл", "Шарман Дінмұхамед"], "11Б": ["Амангелдіұлы Олжас", "Ахметбек Бекболат", "Ахметкаримов Нұрасыл", "Ғизатолла Сәкен", "Дастанұлы Мағжан", "Еркінұлы Алихан", "Жанатов Бекжан", "Кенжехан Ерсұлтан", "Қабиденов Алихан", "Құмарбек Елнұр", "Құмарбек Жәнібек", "Мендеке Әли", "Микебаев Асанали", "Мұратханов Батырхан", "Нарынбек Нұрбек", "Орынбасаров Алихан", "Серікхан Әлемгер", "Таттибеков Жандос", "Тоқтарбеков Айбар", "Тұрсын Нұрарыс", "Барлығы 220"]};
+const PRESETS=[["Свой вариант",""],["БТС 390–419",200],["БТС 420–449",250],["БТС 450–479",300],["БТС 480–509",350],["БТС 510–539",400],["БТС 540–569",450],["БТС 570–599",500],["БТС 600",1000],["Четверть «Екпінді»",100],["Четверть «Үздік»",200],["Парламент",1000],["Құндылық командасы",750],["Еріктілер тобы",500],["IELTS 6.5",500],["IELTS 7",750],["IELTS 7.5",1000],["IELTS 8",1500],["SAT 1200–1299",500],["SAT 1300–1399",750],["SAT 1400–1499",1000],["Облыс: олимпиада 1 место",600],["Облыс: олимпиада 2 место",400],["Облыс: олимпиада 3 место",300],["Респ.: олимпиада 1 место",1500],["Респ.: олимпиада 2 место",1000],["Респ.: олимпиада 3 место",750],["Междунар.: 1 место",3000],["Междунар.: Абсолют 1",5000]];
+const R=[];for(const c in CLASSES)CLASSES[c].forEach((n,i)=>R.push({id:c+"-"+(i+1),n,c,p:parseInt(c)}));
+const SECRET=(R.find(s=>s.c=="10А"&&s.n.includes("Асылмұрат"))||{}).id;
+const $=s=>document.getElementById(s);
+let S={pts:{},log:[]},fPar="all",fCls="all",q="",token="",who="",secretId=null;
+try{token=sessionStorage.getItem("bt")||"";who=sessionStorage.getItem("bw")||""}catch(e){}
+const norm=s=>s.toLowerCase().replace(/ё/g,"е").replace(/\s+/g," ").trim();
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const pts=id=>S.pts[id]||0;
+function ranked(){const a=R.map(s=>({...s,v:pts(s.id)})).sort((x,y)=>y.v-x.v||x.n.localeCompare(y.n));let r=0,prev=null;a.forEach((s,i)=>{if(s.v!==prev){r=i+1;prev=s.v}s.r=r});return a}
+function render(){
+ const all=ranked();const pars=["all",7,8,9,10,11];
+ $("par").innerHTML=pars.map(p=>`<button class="chip ${fPar==p?"on":""}" data-p="${p}">${p=="all"?"Весь лицей":p+" классы"}</button>`).join("");
+ const cl=[...new Set(R.filter(s=>fPar=="all"||s.p==fPar).map(s=>s.c))];
+ $("cls").innerHTML=fPar=="all"?"":`<button class="chip ${fCls=="all"?"on":""}" data-c="all">Все</button>`+cl.map(c=>`<button class="chip ${fCls==c?"on":""}" data-c="${c}">${c}</button>`).join("");
+ let rows=all.filter(s=>(fPar=="all"||s.p==fPar)&&(fCls=="all"||s.c==fCls));
+ if(q){const k=norm(q);rows=rows.filter(s=>norm(s.n).includes(k))}
+ const top=(!q?rows.slice(0,3):[]).filter(s=>s.v>0);
+ const ord=top.length==3?[1,0,2]:top.map((_,i)=>i);
+ $("pod").innerHTML=ord.map(i=>{const s=top[i];return `<div class="pod p${i+1}" data-id="${s.id}"><div class="m">${["🥇","🥈","🥉"][i]}</div><b>${esc(s.n)}</b><span>${s.c}</span><i>${s.v.toLocaleString("ru")}</i></div>`}).join("");
+ $("list").innerHTML=rows.length?rows.map(s=>`<div class="row" tabindex="0" data-id="${s.id}"><div class="rk">${s.r}</div><div>${esc(s.n)}</div><div class="cls">${s.c}</div><div class="pts">${s.v.toLocaleString("ru")}</div></div>`).join(""):`<div class="empty">Такого ученика нет в списке. Проверьте написание имени.</div>`;
+}
+function statement(id){
+ const all=ranked(),s=all.find(x=>x.id==id),inC=all.filter(x=>x.c==s.c),rc=inC.findIndex(x=>x.id==id)+1;
+ const tx=S.log.filter(l=>l.i==id).reverse();
+ $("acct").innerHTML=`<div class="hd"><div class="mini"><img alt="" src="${LOGO}"></div><div><div class="nm">${esc(s.n)}</div><div class="bal">${s.v.toLocaleString("ru")} BILCOIN</div><small>Класс ${s.c}. Место в лицее: ${s.r} из ${R.length}. В классе: ${rc} из ${inC.length}.</small></div></div><div class="bd"><b>Выписка</b>${tx.length?tx.map(t=>`<div class="tx"><span>${esc(t.r||"Начисление")}<br><small>${new Date(t.t).toLocaleDateString("ru")}</small></span><b class="${t.p>=0?"pos":"neg"}">${t.p>0?"+":""}${t.p}</b></div>`).join(""):`<p style="color:var(--mut)">Начислений пока нет.</p>`}<p style="text-align:right"><button class="btn" onclick="$('mod').classList.remove('on')">Закрыть</button></p></div>`;
+ $("mod").classList.add("on");
+}
+
+document.addEventListener("click",e=>{
+ const t=e.target.closest("[data-p],[data-c],[data-id]");
+ if(e.target==$("mod"))$("mod").classList.remove("on");
+ if(e.target==$("lg"))$("lg").classList.remove("on");
+ if(!t)return;
+ if(t.dataset.p){fPar=t.dataset.p=="all"?"all":+t.dataset.p;fCls="all";render()}
+ else if(t.dataset.c){fCls=t.dataset.c;render()}
+ else if(t.dataset.id)openRow(t.dataset.id);
+});
+function openRow(id){if(id==SECRET&&!token){secretId=id;$("lm").textContent="";$("lg").classList.add("on");setTimeout(()=>$("lu").focus(),50)}else statement(id)}
+document.addEventListener("keydown",e=>{if(e.key=="Enter"&&e.target.dataset&&e.target.dataset.id)openRow(e.target.dataset.id);if(e.key=="Escape"){$("mod").classList.remove("on");$("lg").classList.remove("on")}});
+$("seeAcc").onclick=()=>{$("lg").classList.remove("on");statement(secretId)};
+$("q").addEventListener("input",e=>{q=e.target.value;render()});
+$("aPre").innerHTML=PRESETS.map((p,i)=>`<option value="${i}">${p[0]}${p[1]?" ("+p[1]+")":""}</option>`).join("");
+$("aPre").onchange=()=>{const p=PRESETS[$("aPre").value];if(p[1]!==""){$("aPts").value=p[1];$("aWhy").value=p[0]}};
+$("dl").innerHTML=R.map(s=>`<option value="${esc(s.n)} (${s.c})">`).join("");
+async function api(body){const r=await fetch(API,{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(body)});const d=await r.json().catch(()=>({error:"Ошибка сервера"}));d._s=r.status;return d}
+function showAdmin(){const on=!!token;$("bar").style.display=on?"flex":"none";$("adm").style.display=on?"block":"none";$("who").textContent=who}
+function logout(){token="";who="";try{sessionStorage.clear()}catch(e){}showAdmin()}
+$("out").onclick=logout;
+$("lgf").onsubmit=async e=>{e.preventDefault();$("lm").textContent="Проверяю…";
+ const d=await api({action:"login",user:$("lu").value.trim(),pass:$("lp").value});
+ if(d.token){token=d.token;who=d.user;try{sessionStorage.setItem("bt",token);sessionStorage.setItem("bw",who)}catch(e){}$("lp").value="";$("lg").classList.remove("on");showAdmin()}
+ else $("lm").textContent=d.error||"Не удалось войти"};
+$("aGo").onclick=async()=>{
+ const m=$("aMsg"),v=$("aName").value.trim(),p=parseInt($("aPts").value);
+ const s=R.find(x=>`${x.n} (${x.c})`==v)||R.find(x=>norm(x.n)==norm(v));
+ if(!s||!p){m.textContent="Выберите ученика из списка и введите баллы";return}
+ m.textContent="Сохраняю…";
+ const d=await api({action:"award",token,id:s.id,p,r:$("aWhy").value.trim()});
+ if(d.pts){S=d;render();m.textContent=`Готово: ${s.n}, ${p>0?"+":""}${p}`;$("aPts").value="";$("aWhy").value="";$("aName").value=""}
+ else{m.textContent=d.error||"Не удалось сохранить";if(d._s==401)logout()}
+};
+async function load(){try{const r=await fetch(API,{cache:"no-store"});if(r.ok){const d=await r.json();if(d&&d.pts){S=d;render()}}}catch(e){}}
+render();showAdmin();load();setInterval(load,30000);
+</script></body></html>
